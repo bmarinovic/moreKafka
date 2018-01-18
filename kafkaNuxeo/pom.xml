@@ -4,9 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>itsistemi</groupId>
-    <artifactId>itsistemi</artifactId>
+    <groupId>com.bade</groupId>
+    <artifactId>kafkaNuxeo</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
 
     <build>
         <sourceDirectory>src/main/scala</sourceDirectory>
@@ -66,7 +68,22 @@
         </repository>
     </repositories>
 
+    <modules>
+        <module>../moreSharedResources/</module>
+    </modules>
+
     <dependencies>
+
+        <dependency>
+            <groupId>com.bade</groupId>
+            <artifactId>moreSharedResources</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>
+                /home/bade/git/more_2.0/moreSharedResources/target/moreSharedResources-1.0-SNAPSHOT.jar
+            </systemPath>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.12</artifactId>

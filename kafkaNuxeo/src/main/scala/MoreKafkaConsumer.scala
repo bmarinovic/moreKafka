@@ -14,7 +14,7 @@ class MoreKafkaConsumer {
 
   val consumer = new KafkaConsumer[String, String](props)
 
-  consumer.subscribe(Collections.singletonList(Config.documentCreationsTopic))
+  consumer.subscribe(Collections.singletonList(SharedConfig.documentCreationsTopic))
 
 
   def getNextRecords: Iterator[ConsumerRecord[String, String]] = {

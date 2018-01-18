@@ -19,7 +19,8 @@ class MoreKafkaProducer {
 
   def sendCreateDocumentMessage(document: MoreDocument): RecordMetadata = {
 
-    val documentRecord = new ProducerRecord[String, String](Config.documentCreationsTopic, document.title, document
+    val documentRecord = new ProducerRecord[String, String](SharedConfig.documentCreationsTopic,
+      document.title, document
       .toString)
 
     producer.send(documentRecord).get()
