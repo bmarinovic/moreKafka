@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "MoreDocument",
+  "fields": [
+    {
+      "type": "string",
+      "name": "name"
+    },
+    {
+      "type": "string",
+      "name": "title"
+    },
+    {
+      "type": "string",
+      "name": "path"
+    }
+  ]
+}

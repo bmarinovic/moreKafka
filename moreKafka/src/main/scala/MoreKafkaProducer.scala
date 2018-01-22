@@ -6,22 +6,17 @@ class MoreKafkaProducer {
 
   val props = new Properties()
   props.put("bootstrap.servers", "localhost:9092")
-  props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
-  props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
 
-  private val producer = new KafkaProducer[String, String](props)
+  props.put("key.serializer", "org.apache.kafka.common.serialization.LongSerializer")
+  props.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer")
+  props.put("schema.registry.url", "http://localhost:8081")
 
-  //TODO Add JSON/Avro serialization for MoreDocument
-  //  props.put("key.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer")
-  //  props.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer")
-  //  props.put("schema.registry.url", "http://localhost:8081")
-  //  private val producer = new KafkaProducer[String, MoreDocument](props)
+  private val producer = new KafkaProducer[Long, MoreDocument](props)
 
   def sendCreateDocumentMessage(document: MoreDocument): RecordMetadata = {
 
-    val documentRecord = new ProducerRecord[String, String](SharedConfig.documentCreationsTopic,
-      document.title, document
-      .toString)
+    val documentRecord = new ProducerRecord[Long, MoreDocument](SharedConfig.documentCreationsTopic,
+      document)
 
     producer.send(documentRecord).get()
   }

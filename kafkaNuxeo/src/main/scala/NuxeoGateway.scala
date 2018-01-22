@@ -11,10 +11,10 @@ object NuxeoGateway {
     .connect()
 
   def createDocument(moreDocument: MoreDocument): Document = {
-    var document = Document.createWithName(moreDocument.name, "File")
-    document.setPropertyValue("dc:title", moreDocument.title)
+    var document = Document.createWithName(moreDocument.getName.toString, "File")
+    document.setPropertyValue("dc:title", moreDocument.getTitle.toString)
     document = nuxeoClient.repository
-      .createDocumentByPath(moreDocument.path, document)
+      .createDocumentByPath(moreDocument.getPath.toString, document)
 
     document
   }
