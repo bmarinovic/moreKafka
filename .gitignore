@@ -2,10 +2,13 @@
 target
 *.class
 
-#IntelliJ
+# IntelliJ
 *.iml
 *.ipr
 *.iws
 .idea
 out
 
+# Vagrant
+.vagrant
+.vagrantfile
