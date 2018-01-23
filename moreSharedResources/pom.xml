@@ -36,10 +36,10 @@
                             <sourceDirectory>src/main/avro
                             </sourceDirectory>
                         </configuration>
-
                     </execution>
                 </executions>
             </plugin>
+
             <!--force discovery of generated classes-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
